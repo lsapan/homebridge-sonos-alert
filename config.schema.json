@@ -1,0 +1,47 @@
+{
+    "pluginAlias": "SonosAlert",
+    "pluginType": "accessory",
+    "singular": true,
+    "schema": {
+        "type": "object",
+        "properties": {
+            "name": {
+                "title": "Name",
+                "type": "string",
+                "default": "Sonos Alerts",
+                "required": true
+            },
+            "alerts": {
+                "type": "array",
+                "title": "Alerts",
+                "description": "Each alert creates a switch that will play a sound in the target room(s) when turned on.",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "title": "Switch Name",
+                            "required": true
+                        },
+                        "soundUrl": {
+                            "type": "string",
+                            "title": "Sound URL",
+                            "format": "uri",
+                            "required": true
+                        },
+                        "rooms": {
+                            "type": "array",
+                            "title": "Rooms",
+                            "description": "The Sonos room(s) to play the alert sound in.",
+                            "required": true,
+                            "items": {
+                                "type": "string",
+                                "required": true
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
