@@ -1,7 +1,7 @@
 {
     "displayName": "Sonos Alert",
     "name": "homebridge-sonos-alert",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A Homebridge plugin to play a sound in one or more Sonos rooms when a HomeKit switch is triggered.",
     "license": "Apache-2.0",
     "repository": {
