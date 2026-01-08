@@ -4,32 +4,30 @@
     "singular": true,
     "schema": {
         "type": "object",
+        "required": ["name", "alerts"],
         "properties": {
             "name": {
                 "title": "Plugin Name",
                 "type": "string",
-                "required": true,
                 "default": "Sonos Alerts"
             },
             "alerts": {
                 "title": "Alerts",
                 "type": "array",
-                "required": true,
                 "description": "Each alert creates a switch that will play a sound in the specified room(s) when turned on.",
                 "items": {
                     "type": "object",
+                    "required": ["name", "soundUrl", "rooms"],
                     "properties": {
                         "name": {
                             "title": "Switch Name",
                             "type": "string",
-                            "required": true,
                             "placeholder": "Doorbell"
                         },
                         "soundUrl": {
                             "title": "Sound URL",
                             "type": "string",
                             "format": "uri",
-                            "required": true,
                             "placeholder": "https://www.soundjay.com/door/doorbell-1.mp3",
                             "description": "Be sure your Sonos speakers have access to the URL."
                         },
@@ -37,14 +35,13 @@
                             "title": "Rooms",
                             "type": "array",
                             "description": "The Sonos room(s) to play the alert sound in. You can have an alert play in multiple rooms.",
-                            "required": true,
                             "items": {
                                 "type": "object",
+                                "required": ["name"],
                                 "properties": {
                                     "name": {
                                         "title": "Room Name",
                                         "type": "string",
-                                        "required": true,
                                         "placeholder": "Living Room",
                                         "description": "Enter the room name as it appears in the Sonos app, or enter \"All\" to play on every speaker."
                                     },
