@@ -45,15 +45,15 @@ Here's an example config that shows a mix of different options and settings. Bea
             "rooms": [
                 {
                     "name": "Living Room",
-                    "volume": 50,
+                    "volume": 50
                 },
                 {
                     "name": "Bedroom",
-                    "volume": 20,
+                    "volume": 20
                 },
                 {
                     "name": "Kitchen"
-                },
+                }
             ]
         },
         {
@@ -61,8 +61,8 @@ Here's an example config that shows a mix of different options and settings. Bea
             "soundUrl": "https://example.com/freeze.mp3",
             "rooms": [
                 {
-                    "name": "All",
-                },
+                    "name": "All"
+                }
             ]
         }
     ],
