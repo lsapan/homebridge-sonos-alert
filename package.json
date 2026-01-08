@@ -1,0 +1,43 @@
+{
+    "displayName": "Sonos Alert",
+    "name": "homebridge-sonos-alert",
+    "version": "1.0.0",
+    "description": "A Homebridge plugin to play a sound in one or more Sonos rooms when a HomeKit switch is triggered.",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/lsapan/homebridge-sonos-alert.git"
+    },
+    "bugs": {
+        "url": "https://github.com/lsapan/homebridge-sonos-alert/issues"
+    },
+    "engines": {
+        "node": "^18.17.0 || ^20.9.0 || ^22.0.0",
+        "homebridge": "^1.6.0"
+    },
+    "main": "dist/index.js",
+    "scripts": {
+        "lint": "eslint src/**/*.ts --max-warnings=0",
+        "watch": "npm run build && npm link && nodemon",
+        "build": "rimraf ./dist && tsc",
+        "prepublishOnly": "npm run lint && npm run build"
+    },
+    "keywords": [
+        "homebridge-plugin"
+    ],
+    "devDependencies": {
+        "@types/node": "^20.12.7",
+        "@typescript-eslint/eslint-plugin": "^7.7.0",
+        "@typescript-eslint/parser": "^7.7.0",
+        "concurrently": "^8.2.2",
+        "eslint": "^8.57.0",
+        "homebridge": "^1.8.0",
+        "nodemon": "^3.1.0",
+        "rimraf": "^5.0.5",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.4.5"
+    },
+    "dependencies": {
+        "@svrooij/sonos": "^2.5.0"
+    }
+}

@@ -1,0 +1,121 @@
+{
+    "pluginAlias": "Sonos Alert",
+    "pluginType": "platform",
+    "singular": true,
+    "schema": {
+        "type": "object",
+        "properties": {
+            "name": {
+                "title": "Plugin Name",
+                "type": "string",
+                "required": true,
+                "default": "Sonos Alerts"
+            },
+            "alerts": {
+                "title": "Alerts",
+                "type": "array",
+                "required": true,
+                "description": "Each alert creates a switch that will play a sound in the specified room(s) when turned on.",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "title": "Switch Name",
+                            "type": "string",
+                            "required": true,
+                            "placeholder": "Doorbell"
+                        },
+                        "soundUrl": {
+                            "title": "Sound URL",
+                            "type": "string",
+                            "format": "uri",
+                            "required": true,
+                            "placeholder": "https://www.soundjay.com/door/doorbell-1.mp3",
+                            "description": "Be sure your Sonos speakers have access to the URL."
+                        },
+                        "rooms": {
+                            "title": "Rooms",
+                            "type": "array",
+                            "description": "The Sonos room(s) to play the alert sound in. You can have an alert play in multiple rooms.",
+                            "required": true,
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "title": "Room Name",
+                                        "type": "string",
+                                        "required": true,
+                                        "placeholder": "Living Room",
+                                        "description": "Enter the room name as it appears in the Sonos app, or enter \"All\" to play on every speaker."
+                                    },
+                                    "volume": {
+                                        "title": "Volume (optional)",
+                                        "type": "number",
+                                        "minimum": 0,
+                                        "maximum": 100,
+                                        "placeholder": "[use room's current volume]",
+                                        "description": "Optionally, set a volume (0 - 100) for the alert in this room. Leave blank to use the room's current volume. It's recommended to set a volume here if you regularly lower the volume in this room, or you want the alert to play at a consistent volume."
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "advanced": {
+                "title": "Advanced Settings (optional)",
+                "type": "object",
+                "properties": {
+                    "ip_address": {
+                        "title": "Sonos Speaker IP Address",
+                        "type": "string",
+                        "placeholder": "[auto-discover]",
+                        "description": "Only set this if you're having issues with auto-discovery! If the plugin isn't able to discover any of your Sonos speakers, you can explicitly provide one of your speaker's IPs here (ideally a static one). This single IP address will allow us to reach all of your speakers."
+                    }
+                }
+            }
+        }
+    },
+    "layout": [
+        {
+            "key": "alerts",
+            "type": "array",
+            "title": "Alerts",
+            "description": "Each alert creates a switch that will play a sound in the specified room(s) when turned on.",
+            "buttonText": "Add Alert",
+            "items": [
+                "alerts[].name",
+                "alerts[].soundUrl",
+                {
+                    "key": "alerts[].rooms",
+                    "type": "array",
+                    "title": "Rooms",
+                    "description": "The Sonos room(s) to play the alert sound in. You can have an alert play in multiple rooms.",
+                    "buttonText": "Add Room",
+                    "items": [
+                        "alerts[].rooms[].name",
+                        "alerts[].rooms[].volume"
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "fieldset",
+            "expandable": true,
+            "expanded": false,
+            "title": "Advanced Settings (optional)",
+            "items": [
+                "advanced.ip_address"
+            ]
+        },
+        {
+            "type": "fieldset",
+            "expandable": true,
+            "expanded": false,
+            "title": "Other Settings",
+            "items": [
+                "name"
+            ]
+        }
+    ]
+}
